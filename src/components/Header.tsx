@@ -24,30 +24,28 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, currentLang, onLanguageCha
   return (
     <header className="bg-green-800 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col items-center justify-center w-full md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col items-center w-full md:flex-row md:items-center md:space-x-4">
-            <div className="flex items-center justify-center w-full md:w-auto">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={onMenuClick}
-                className="md:hidden text-white hover:bg-green-700 absolute left-2 top-2"
-              >
-                <Menu className="h-6 w-6" />
-              </Button>
-              <div className="flex flex-col items-center md:flex-row md:items-center md:space-x-3 w-full">
-                <img
-                  src="/boaggw-logo.jpg"
-                  alt="Borno State Agency for Great Green Wall Logo"
-                  className="w-14 h-14 object-contain border-2 border-green-200 bg-white mb-2 md:mb-0 md:w-20 md:h-20"
-                />
-                <h1 className="text-base font-bold text-center leading-tight md:text-xl md:text-left md:ml-2">
-                  Borno state agency for great green wall
-                </h1>
-              </div>
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center w-2/3 md:w-auto">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onMenuClick}
+              className="md:hidden text-white hover:bg-green-700 mr-2"
+            >
+              <Menu className="h-6 w-6" />
+            </Button>
+            <div className="flex flex-col items-start md:flex-row md:items-center md:space-x-3">
+              <img
+                src="/boaggw-logo.jpg"
+                alt="Borno State Agency for Great Green Wall Logo"
+                className="w-14 h-14 object-contain border-2 border-green-200 bg-white mb-1 md:mb-0 md:w-20 md:h-20"
+              />
+              <h1 className="text-base font-bold text-left leading-tight md:text-xl md:text-left md:ml-2">
+                Borno state agency for great green wall
+              </h1>
             </div>
           </div>
-          <div className="mt-2 md:mt-0">
+          <div className="w-1/3 flex justify-end md:w-auto md:mt-0">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="text-white hover:bg-green-700">
