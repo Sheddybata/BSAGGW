@@ -85,12 +85,12 @@ const AboutPage: React.FC<AboutPageProps> = ({ language }) => {
   return (
     <div className="space-y-8">
       {/* Leadership Block */}
-      <Card className="max-w-3xl mx-auto mb-8">
+      <Card className="mb-8">
         <CardHeader className="flex flex-col items-center">
           <img
             src="/amb-usman-aliyu.jpg"
             alt="Amb. Usman Aliyu"
-            className="w-48 h-48 object-contain border-4 border-green-200 shadow mb-4"
+            className="w-48 h-48 object-cover border-4 border-green-200 shadow mb-4 p-0 m-0"
           />
           <CardTitle className="text-green-800 text-2xl text-center">Amb. Usman Aliyu</CardTitle>
           <p className="text-green-700 text-center font-medium">Director-General, Borno State Agency for the Great Green Wall (BSAGGW)</p>
