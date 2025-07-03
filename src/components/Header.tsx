@@ -17,23 +17,6 @@ interface HeaderProps {
   onLanguageChange: (lang: string) => void;
 }
 
-function Earth3D() {
-  return (
-    <Canvas style={{ width: '100px', height: '100px' }} camera={{ position: [0, 0, 2.5], fov: 45 }}>
-      <ambientLight intensity={0.7} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
-      <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
-      <Suspense fallback={null}>
-        <mesh rotation={[0.5, 0.5, 0]}>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshStandardMaterial color="#22c55e" wireframe={false} />
-        </mesh>
-      </Suspense>
-      <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.7} enablePan={false} />
-    </Canvas>
-  );
-}
-
 const Header: React.FC<HeaderProps> = ({ onMenuClick, currentLang, onLanguageChange }) => {
   const languages = [
     { code: 'en', name: 'English' },
@@ -43,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, currentLang, onLanguageCha
 
   return (
     <header className="bg-green-800 text-white shadow-lg">
-      <div className="container mx-auto px-4 py-4">
+      <div className="w-full px-4 py-4 md:px-8 md:py-4">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center w-2/3 md:w-auto">
             <Button
@@ -66,9 +49,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, currentLang, onLanguageCha
             </div>
           </div>
           <div className="w-1/3 flex flex-col items-end md:flex-row md:items-center md:w-auto md:mt-0">
-            <div className="mb-2 md:mb-0 md:mr-4 flex justify-end">
-              <Earth3D />
-            </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="text-white hover:bg-green-700">
