@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, currentLang, onLanguageCha
                 alt="Borno State Agency for Great Green Wall Logo"
                 className="w-14 h-14 object-contain border-2 border-green-200 bg-white mb-1 md:mb-0 md:w-20 md:h-20"
               />
-              <h1 className="text-base font-bold text-left leading-tight md:text-xl md:text-left md:ml-2">
+              <h1 className="hidden md:block text-base font-bold text-left leading-tight md:text-xl md:text-left md:ml-2">
                 Borno state agency for great green wall
               </h1>
             </div>
