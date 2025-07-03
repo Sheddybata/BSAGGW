@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, Globe } from 'lucide-react';
 import {
@@ -7,11 +7,31 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Stars } from '@react-three/drei';
+import * as THREE from 'three';
 
 interface HeaderProps {
   onMenuClick: () => void;
   currentLang: string;
   onLanguageChange: (lang: string) => void;
+}
+
+function Earth3D() {
+  return (
+    <Canvas style={{ width: '100px', height: '100px' }} camera={{ position: [0, 0, 2.5], fov: 45 }}>
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[5, 5, 5]} intensity={1} />
+      <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
+      <Suspense fallback={null}>
+        <mesh rotation={[0.5, 0.5, 0]}>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial color="#22c55e" wireframe={false} />
+        </mesh>
+      </Suspense>
+      <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.7} enablePan={false} />
+    </Canvas>
+  );
 }
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick, currentLang, onLanguageChange }) => {
@@ -45,7 +65,10 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, currentLang, onLanguageCha
               </h1>
             </div>
           </div>
-          <div className="w-1/3 flex justify-end md:w-auto md:mt-0">
+          <div className="w-1/3 flex flex-col items-end md:flex-row md:items-center md:w-auto md:mt-0">
+            <div className="mb-2 md:mb-0 md:mr-4 flex justify-end">
+              <Earth3D />
+            </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="text-white hover:bg-green-700">
